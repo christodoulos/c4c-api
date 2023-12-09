@@ -48,7 +48,7 @@ async function bootstrap() {
     },
     customCssUrl: 'theme-flattop.css',
     customfavIcon: 'favicon.ico',
-    customSiteTitle: 'Digital Twins of Athens API',
+    customSiteTitle: 'C4C Platform API',
   };
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document, customOptions);
