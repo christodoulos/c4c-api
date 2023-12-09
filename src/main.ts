@@ -25,7 +25,7 @@ async function bootstrap() {
     .setTitle('C4C API')
     .setDescription('C4C Platform API')
     .setVersion('1.0')
-    .addTag('AtticaDT Management', 'Manage AtticaDT application level data')
+    .addTag('C4C Management', 'C4C Platform Management')
     .addBearerAuth(
       {
         type: 'http',
