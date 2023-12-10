@@ -29,11 +29,10 @@ export class UserService {
     user.firstName = given_name;
     user.lastName = family_name;
     user.photoUrl = picture;
-    return user.save();
+    return await user.save();
   }
 
   async findOne(id: string): Promise<User | undefined> {
-    console.log('FINDING ONE', id);
-    return this.userModel.findOne({ id }).exec();
+    return this.userModel.findOne({ id }).lean();
   }
 }

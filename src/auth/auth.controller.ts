@@ -1,5 +1,5 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { ApiTags, ApiBody } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { Public } from 'src/app.metadata';
 
@@ -10,18 +10,12 @@ export class AuthController {
 
   @Public()
   @Post('google-login')
-  @ApiBody({ type: String })
   async googleLogin(@Body('idToken') idToken: string) {
     try {
-      console.log('GOOGLE LOGIN', idToken);
-      const userId = await this.authService.verifyGoogleToken(idToken);
-
-      // At this point, the token is verified, and you can proceed with creating or retrieving the user profile
-      // You may also generate your application's JWT token and send it back to the client for further authentication and authorization.
-
-      return { message: 'Successfully authenticated with Google.', userId };
+      const access_token = (await this.authService.verifyGoogleToken(idToken))
+        .access_token;
+      return { access_token };
     } catch (error) {
-      // Handle authentication failure
       return { error: error.message };
     }
   }
