@@ -10,6 +10,8 @@ export class User {
   @Prop({ type: String, required: true }) lastName: string;
   @Prop({ type: String, required: true }) photoUrl: string;
   @Prop({ type: String }) category?: string;
+  @Prop({ type: String }) institution?: string;
+  @Prop({ type: String }) linkedin?: string;
   @Prop({ type: String, default: 'GOOGLE' }) provider: string;
 }
 

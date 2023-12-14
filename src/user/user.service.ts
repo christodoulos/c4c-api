@@ -35,4 +35,15 @@ export class UserService {
   async findOne(id: string): Promise<User | undefined> {
     return this.userModel.findOne({ id }).lean();
   }
+
+  async register(user: Partial<User>): Promise<User> {
+    console.log(user);
+    return await this.userModel
+      .findOneAndUpdate({ id: user.id }, user, {
+        returnOriginal: false,
+        upsert: true,
+      })
+      .select('-_id -__v')
+      .lean();
+  }
 }

@@ -29,9 +29,19 @@ export class AuthService {
       }
       // Generate JWT
       const payload = {
-        email: user.email,
-        name: user.name,
-        category: user.category,
+        user: {
+          loggedIn: true,
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          photoUrl: user.photoUrl,
+          category: user.category,
+          institution: user.institution,
+          linkedin: user.linkedin,
+          provider: user.provider,
+        },
       };
       const access_token = this.jwtService.sign(payload);
       return { access_token };
